@@ -2,6 +2,10 @@
 
 This is a PHP based website I made to easily save info from a song on internet radio. Download it [here](https://github.com/jaketr00/saveMusicInfo/blob/master/saveMusicInfo/compressed/saveMusicInfo.zip?raw=true).
 
+## What is it for?
+
+Have you ever been listening to internet radio and thought "I need so remember this song for later"?  This is that answer.
+
 ## Required programs
 
 * Any program that can run PHP ([Wamp](http://www.wampserver.com/en/), [Mamp/Mamp Pro](https://www.mamp.info/en/),  [Lamp](https://en.wikipedia.org/wiki/LAMP_\(software_bundle\)#External_links),  [Xampp](https://www.apachefriends.org/index.html),  [Ampps](http://www.ampps.com/), etc.)
@@ -10,10 +14,6 @@ This is a PHP based website I made to easily save info from a song on internet r
 
 * [TamperMonkey](http://tampermonkey.net/) (Chrome/Safari/Opera/Dolphin)
 * [GreaseMonkey](https://addons.mozilla.org/en-US/firefox/addon/greasemonkey/) (Firefox)
-
-# What is it for?
-
-Have you ever been listening to internet radio and thought "I need so remember this song for later"?  This is that answer.
 
 # How to use
 
