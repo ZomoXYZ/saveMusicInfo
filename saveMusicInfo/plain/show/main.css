@@ -1,0 +1,123 @@
+@font-face {
+    font-family: 'OpenSans-Light';
+    src: url(fonts/Open_Sans/OpenSans-Light.ttf);
+}
+@font-face {
+    font-family: 'OpenSans-Regular';
+    src: url(fonts/Open_Sans/OpenSans-Regular.ttf);
+}
+@font-face {
+    font-family: 'OpenSans-Semibold';
+    src: url(fonts/Open_Sans/OpenSans-Semibold.ttf);
+}
+body,html{margin:0;padding:0;}
+#song {
+    position: relative;
+    font-family: 'OpenSans-Regular';
+    font-size: 15px;
+    cursor: default;
+}
+#song #img {
+    width: 400px;
+    height: 400px;
+    position: relative;
+}
+#song #img::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    width: 5px;
+    height: 100%;
+    -webkit-box-shadow: 1px 0px 10px 1px rgba(0,0,0,1);
+    -moz-box-shadow: 1px 0px 10px 1px rgba(0,0,0,1);
+    box-shadow: 1px 0px 10px 1px rgba(0,0,0,1);
+    z-index: -1;
+}
+#song #allinfo {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    top: 0;
+    left: 400px;
+    height: 400px;
+    margin-left: 15px;
+    /*border-left: 2px solid #ccc;*/
+    padding-left: 5px;
+}
+#song #allinfo::before {
+    content: '';
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: -2px;
+    background: -moz-linear-gradient(top,  rgba(204,204,204,0) 0%, rgba(204,204,204,0) 10%, rgba(204,204,204,1) 25%, rgba(204,204,204,1) 75%, rgba(204,204,204,0.01) 90%, rgba(204,204,204,0.01) 100%);
+    background: -webkit-linear-gradient(top,  rgba(204,204,204,0) 0%,rgba(204,204,204,0) 10%,rgba(204,204,204,1) 25%,rgba(204,204,204,1) 75%,rgba(204,204,204,0.01) 90%,rgba(204,204,204,0.01) 100%);
+    background: linear-gradient(to bottom,  rgba(204,204,204,0) 0%,rgba(204,204,204,0) 10%,rgba(204,204,204,1) 25%,rgba(204,204,204,1) 75%,rgba(204,204,204,0.01) 90%,rgba(204,204,204,0.01) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00cccccc', endColorstr='#03cccccc',GradientType=0 );
+    z-index: -2;
+}
+#song #allinfo::after {
+    content: '';
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    background: white;
+    z-index: -1;
+}
+#song #allinfo #songname {
+    font-family: 'OpenSans-Light';
+    font-size: 30px;
+}
+#song #allinfo #album::before {
+    content: 'on: ';
+    font-family: 'OpenSans-SemiBold';
+    color: #999;
+}
+#song #allinfo #artist::before {
+    content: 'by: ';
+    font-family: 'OpenSans-SemiBold';
+    color: #999;
+}
+#song #allinfo #info #timeAdded::before {
+    content: 'saved: ';
+    font-family: 'OpenSans-SemiBold';
+    color: #999;
+}
+a {
+    color: black;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+a:active {
+    color: rgb(0,0,155);
+}
+#song #allinfo #info #timeAdded div {
+    display: inline;
+}
+#song #allinfo #info #timeAdded #dayOfWeek::after {
+    content: ', ';
+}
+#song #allinfo #info #timeAdded #date #month::after {
+    content: ' ';
+}
+#song #allinfo #info #timeAdded #date #day::after {
+    content: ' ';
+}
+#song #allinfo #info #timeAdded #date #year::after {
+    content: '; ';
+}
+#song #allinfo #info #timeAdded #time #hour::after {
+    content: ':';
+}
+#song #allinfo #info #timeAdded #time #min::after {
+    content: ':';
+}
+#song #allinfo #info #timeAdded #time #sec::after {
+    content: ' ';
+}

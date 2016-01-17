@@ -1,0 +1,30 @@
+#img img {
+    -webkit-filter: grayscale(1);
+    filter: grayscale(1);
+    -webkit-transition: .3s filter linear, .3s -webkit-filter linear;
+    transition: .3s filter linear, .3s -webkit-filter linear;
+    /*-webkit-filter: saturate(100);
+    filter: saturate(100);*/
+}
+#song:hover #img img {
+    -webkit-filter: grayscale(.75);
+    filter: grayscale(.75);
+    -webkit-transition: .1s filter linear, .1s -webkit-filter linear;
+    transition: .1s filter linear, .1s -webkit-filter linear;
+}
+#img:hover img, #img img:hover {
+    -webkit-filter: grayscale(.25) !important;
+    filter: grayscale(.25) !important;
+}
+#controls {
+    margin-top: 15px;
+}
+#controls > div {
+    display: inline-block;
+}
+#controls > div a {
+    color: rgb(0,0,155);
+}
+#controls > div a:active {
+    color: rgb(0,0,0);
+}
