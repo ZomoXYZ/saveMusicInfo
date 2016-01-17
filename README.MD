@@ -1,6 +1,6 @@
 # Save Music Info
 
-This is a PHP based website I made to easily save info from a song.
+This is a PHP based website I made to easily save info from a song on internet radio. Download it [here](https://github.com/jaketr00/saveMusicInfo/blob/master/saveMusicInfo/compressed/saveMusicInfo.zip?raw=true).
 
 ## Required programs
 
