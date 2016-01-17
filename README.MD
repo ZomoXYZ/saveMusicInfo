@@ -21,8 +21,8 @@ Have you ever been listening to internet radio and thought "I need so remember t
 
 1. Download the compressed file from [here](localhost) and extract the contents.
 2. Go to your server's files (the server is the required program).
- ** Usually under `C://(program name)/` in Windows or `/Applications/(program name).app/` in OSX.
- *** In OSX you will have to CTRL+Click the program, then click "Show Package Contents".
+ * Usually under `C://(program name)/` in Windows or `/Applications/(program name).app/` in OSX.
+ * In OSX you will have to CTRL+Click the program, then click "Show Package Contents".
 3. Find either the folder named "htdocs" or "www".
 4. In the folder you found, make a folder named whatever you want.
 5. In the contents of the extracted file, you should see a few files and folders named "index.php", "backup", and "show".  If you do not see those, find a folder named "saveMusicInfo" and open that folder.
@@ -71,22 +71,52 @@ $('.buyButton').click(function() {
 Line by Line
 
 1. When you click on the item with the classname of `buyButton` run the rest of the code.
-* ![Reference Image](https://raw.githubusercontent.com/jaketr00/saveMusicInfo/master/resources/buyButton.png)
+ * ![Reference Image](https://raw.githubusercontent.com/jaketr00/saveMusicInfo/master/resources/buyButton.png)
 2. Referencing an element that has a parent class name of "trackData" and a class name of "albumTitle". It gets the text from inside that element (This will be the album name).
 3. Referencing an element that has a parent class name of "trackData" and a class name of "songTitle". It gets the text from inside that element (This will be the song name).
 4. Referencing an element that has a parent class name of "trackData" and a class name of "artistSummary". It gets the text from inside that element (This will be the artist name).
-* ![Reference Image](https://raw.githubusercontent.com/jaketr00/saveMusicInfo/master/resources/song%20info.png)
+ * ![Reference Image](https://raw.githubusercontent.com/jaketr00/saveMusicInfo/master/resources/song%20info.png)
 5. This will make a list item inside the drop down menu (which has a parent id of "buy_menu_dd") with text saying "Save Info".
-* ![Reference Image](https://raw.githubusercontent.com/jaketr00/saveMusicInfo/master/resources/button.png)
+ * ![Reference Image](https://raw.githubusercontent.com/jaketr00/saveMusicInfo/master/resources/button.png)
 6. When you click the button made from line 5 run the rest of the code.
 7. Url of the `index.php` in reference to your `www` or `htdocs`, **YOU MUST CHANGE THIS**.
 8. Open the php file in a new tab with the artist name, album name, and song name.
 9. End the code ran from line 6.
 10. End the code ran from line 1.
 
+# Saving Syntax
+
+Now that you have the website up and running, you may want to save the songs from not only itunes.  Here is how you will enter the url.
+
+There are 3 php values, all required. (PHP values are made with `?` and `&`.  `url?value1=val&value2=val&value3=val`)
+
+1. `artist`: artist name
+1. `album`: album name
+1. `song`: song name
+
+**Example**
+
+`http://localhost/path/to/index.php?artist=artist%20name&album=album%20name&song=song%20name`
+
+* Change "`path/to/index.php`" to where your `index.php` file is from either the `htdocs` or `www` folder on your server.
+* Do not forget to escape the url:
+
+**PHP**
+`urlencode('artist name')`
+
+**Javascript**
+`escape('artist name')`
+
+# Notes
+
+1. Timezone is in UTC, you can change this on
+ * `/index.php`, line 5
+ * `/show/edit/index.php`, line 75
+
 ## Other Projects used in this
 
 * [Open Sans](https://www.google.com/fonts/specimen/Open+Sans) (Light, Regular, and SemiBold)
+* iTunes Search (made possible by [iTunes](http://www.itunes.com/))
 
 # License
 
