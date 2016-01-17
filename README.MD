@@ -127,6 +127,8 @@ escape(str);
 1. Timezone is in UTC, you can change this on
  * `/index.php`, line 5
  * `/show/edit/index.php`, line 75
+2. Do no click "Download Zip" to download this, either click the link at the top of this description or in the directory at the top of this page go to `saveMusicInfo/compressed` and download that zip.
+ * Biggest reason I have this set up like that is because you cannot upload blank folders in github.
 
 ### Other Projects used in this
 
