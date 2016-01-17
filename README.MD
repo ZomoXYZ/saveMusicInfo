@@ -57,7 +57,7 @@ Have you ever been listening to internet radio and thought "I need so remember t
 $('.buyButton').click(function() {
     var albumex = $('.trackData .albumTitle').text();
     var songex = $('.trackData .songTitle').text();
-    var artistex = $('.trackData a.artistSummary').text();
+    var artistex = $('.trackData .artistSummary').text();
     $('#buy_menu_dd ul').append('<li class="SVall" style="cursor:pointer"><a>Save Info</a></li>');
     $('.SVall').click(function() {
         var url = 'http://localhost/path/to/index.php';
@@ -71,6 +71,22 @@ $('.buyButton').click(function() {
 Line by Line
 
 1. When you click on the item with the classname of `buyButton` run the rest of the code.
+* ![Reference Image](https://raw.githubusercontent.com/jaketr00/saveMusicInfo/master/resources/buyButton.png)
+2. Referencing an element that has a parent class name of "trackData" and a class name of "albumTitle". It gets the text from inside that element (This will be the album name).
+3. Referencing an element that has a parent class name of "trackData" and a class name of "songTitle". It gets the text from inside that element (This will be the song name).
+4. Referencing an element that has a parent class name of "trackData" and a class name of "artistSummary". It gets the text from inside that element (This will be the artist name).
+* ![Reference Image](https://raw.githubusercontent.com/jaketr00/saveMusicInfo/master/resources/song%20info.png)
+5. This will make a list item inside the drop down menu (which has a parent id of "buy_menu_dd") with text saying "Save Info".
+* ![Reference Image](https://raw.githubusercontent.com/jaketr00/saveMusicInfo/master/resources/button.png)
+6. When you click the button made from line 5 run the rest of the code.
+7. Url of the `index.php` in reference to your `www` or `htdocs`, **YOU MUST CHANGE THIS**.
+8. Open the php file in a new tab with the artist name, album name, and song name.
+9. End the code ran from line 6.
+10. End the code ran from line 1.
+
+## Other Projects used in this
+
+* [Open Sans](https://www.google.com/fonts/specimen/Open+Sans) (Light, Regular, and SemiBold)
 
 # License
 
