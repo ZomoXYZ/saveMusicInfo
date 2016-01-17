@@ -84,6 +84,15 @@ Line by Line
 9. End the code ran from line 6.
 10. End the code ran from line 1.
 
+# Other useful pages in this project
+
+1. Show saved songs.
+ * http://localhost/`path/to/project/`show/
+2. Retrieve backups of saved songs.
+ * http://localhost/`path/to/project/`show/backup/
+2. Delete a song.
+ * http://localhost/`path/to/project/`show/edit/
+
 # Saving Syntax
 
 Now that you have the website up and running, you may want to save the songs from not only itunes.  Here is how you will enter the url.
