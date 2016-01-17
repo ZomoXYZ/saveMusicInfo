@@ -102,10 +102,16 @@ There are 3 php values, all required. (PHP values are made with `?` and `&`.  `u
 * Do not forget to escape the url:
 
 **PHP**
-`urlencode('artist name')`
+```
+$str='artist name';
+urlencode($str);
+```
 
 **Javascript**
-`escape('artist name')`
+```
+str='artist name';
+escape(str);
+```
 
 # Notes
 
