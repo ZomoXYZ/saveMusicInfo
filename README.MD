@@ -11,7 +11,7 @@ This is a PHP based website I made to easily save info from a song on internet r
 * [TamperMonkey](http://tampermonkey.net/) (Chrome/Safari/Opera/Dolphin)
 * [GreaseMonkey](https://addons.mozilla.org/en-US/firefox/addon/greasemonkey/) (Firefox)
 
-## What is it for?
+# What is it for?
 
 Have you ever been listening to internet radio and thought "I need so remember this song for later"?  This is that answer.
 
@@ -119,7 +119,7 @@ escape(str);
  * `/index.php`, line 5
  * `/show/edit/index.php`, line 75
 
-## Other Projects used in this
+### Other Projects used in this
 
 * [Open Sans](https://www.google.com/fonts/specimen/Open+Sans) (Light, Regular, and SemiBold)
 * iTunes Search (made possible by [iTunes](http://www.itunes.com/))
