@@ -1,4 +1,8 @@
 <?php
+    
+    if (!file_exists('backup/')) {
+        mkdir('backup/');
+    };
 
     if(isset($_GET['artist']) && isset($_GET['album']) && isset($_GET['song'])) {
         
