@@ -138,10 +138,12 @@ escape(str);
   * Only able to edit from local machine.
   * Whitelist machines allowed to edit.
   * Blacklist machines allowed to edit.
+  * Custom Theme.
   * Allow local options (using cookies).
   * Make default local options.
 * Make local options (using cookies):
   * Night theme.
+  * Custom CSS.
   * Exportable options.
   * Importable options.
 
