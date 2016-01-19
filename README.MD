@@ -127,6 +127,29 @@ escape(str);
 * [Open Sans](https://www.google.com/fonts/specimen/Open+Sans) (Light, Regular, and SemiBold)
 * iTunes Search (made possible by [iTunes](http://www.itunes.com/))
 
+## To Do
+
+* Mobile theme for "/show/" page.
+* Make "/show/backups" and "/show/edit" able to be accessed with links throughout the site.
+* Make global options:
+  * Only able to add from local machine.
+  * Whitelist machines allowed to add.
+  * Blacklist machines allowed to add.
+  * Only able to edit from local machine.
+  * Whitelist machines allowed to edit.
+  * Blacklist machines allowed to edit.
+  * Allow local options (using cookies).
+  * Make default local options.
+* Make local options (using cookies):
+  * Night theme.
+  * Exportable options.
+  * Importable options.
+
+#### What I will not do
+
+* Full mobile support
+  * "/show/backups" and "/show/edit" pages will not have a mobile theme.
+
 # License
 
 [**The MIT License (MIT)**](https://github.com/jaketr00/saveMusicInfo/blob/visual/LICENSE.md)
