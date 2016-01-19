@@ -129,9 +129,12 @@ escape(str);
 
 ## To Do
 
+* Make a `readme.txt` file to explain how to update files without loosing your info.
+* Make an indicator to let you know if there is an update for the site.
 * Mobile theme for "/show/" page.
 * Make "/show/backups" and "/show/edit" able to be accessed with links throughout the site.
 * Make global options:
+  * Make TimeZone editable without changing the Code.
   * Only able to add from local machine.
   * Whitelist machines allowed to add.
   * Blacklist machines allowed to add.
