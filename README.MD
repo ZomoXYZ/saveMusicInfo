@@ -59,7 +59,7 @@ $('.buyButton').click(function() {
     var songex = $('.trackData .songTitle').text();
     var artistex = $('.trackData .artistSummary').text();
     var url = 'http://localhost/path/to/index.php';
-    $('#buy_menu_dd ul').append('<li class="SVall" style="cursor:pointer"><a href="url+'?artist=' + escape(artistex) + '&album=' + escape(albumex) + '&song=' + escape(songex)+'">Save Info</a></li>');
+    $('#buy_menu_dd ul').append('<li class="SVall" style="cursor:pointer"><a href="url+'?artist=' + escape(artistex) + '&album=' + escape(albumex) + '&song=' + escape(songex)+'" target="_blank">Save Info</a></li>');
 });
 ```
 
@@ -74,7 +74,7 @@ Line by Line
 4. Referencing an element that has a parent class name of "trackData" and a class name of "artistSummary". It gets the text from inside that element (This will be the artist name).
  * ![Reference Image](https://raw.githubusercontent.com/jaketr00/saveMusicInfo/master/resources/song%20info.png)
 5. Url of the `index.php` in reference to your `www` or `htdocs`, **YOU MUST CHANGE THIS**.
-6. This will make a list item inside the drop down menu (which has a parent id of "buy_menu_dd") with text saying "Save Info".  This will also have a link to your local server to add this song.
+6. This will make a list item inside the drop down menu (which has a parent id of "buy_menu_dd") with text saying "Save Info".  This will also have a link to your local server to add this song which will open in a new tab.
  * ![Reference Image](https://raw.githubusercontent.com/jaketr00/saveMusicInfo/master/resources/button.png)
 7. End the code ran from line 1.
 
