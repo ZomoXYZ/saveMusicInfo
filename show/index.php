@@ -100,7 +100,7 @@
                 
                 if (currentXML === newXML) {
                 
-                    setTimeout(function() {updatePage(currentXML)}, 60000);
+                    setTimeout(function() {updatePage(currentXML)}, 1000);
                     
                 }else {
                     
@@ -132,20 +132,24 @@
         xhr.send(params); 
     };
     
+    function randomString(length, chars) {
+        var result = '';
+        for (var i = length; i > 0; --i) result += chars[Math.floor(Math.random() * chars.length)];
+        return result;
+    }
     
     var title = document.getElementById('title');
     var titleText;
     titleText = title.innerHTML;
-    var times = 10;
     
     function checkVersion() {
-        ++times;
+        var ranStr = randomString(32, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ');
         var version;
         var currentVersion;
         
-        postRequest ('https://raw.githubusercontent.com/jaketr00/saveMusicInfo/master/version.txt?v='+times, null, function (response1) {
+        postRequest ('https://raw.githubusercontent.com/jaketr00/saveMusicInfo/master/version.txt?v='+ranStr, null, function (response1) {
             
-            postRequest ('../version.txt?v='+times, null, function (response2) {
+            postRequest ('../version.txt?v='+ranStr, null, function (response2) {
                 
                 while (document.getElementById('alert').hasChildNodes()) {
                     document.getElementById('alert').removeChild(document.getElementById('alert').lastChild);
@@ -219,7 +223,7 @@
         }); 
         
         
-        setTimeout(function() {checkVersion()}, 1000);
+        setTimeout(function() {checkVersion()}, 60000);
     }
     
     window.onbeforeunload = function() {
