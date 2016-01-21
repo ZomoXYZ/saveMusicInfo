@@ -100,7 +100,7 @@
                 
                 if (currentXML === newXML) {
                 
-                    setTimeout(function() {updatePage(currentXML)}, 1000);
+                    setTimeout(function() {updatePage(currentXML)}, 60000);
                     
                 }else {
                     
