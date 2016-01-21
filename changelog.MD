@@ -1,6 +1,8 @@
 # Version 1.1
 
-* Added Mobile Theme
+* Mobile theme for "/show/" page.
+* Indicator to let you know if there is an update.
+* `update.txt` file to explain how to update files without loosing your info.
 
 # Version 1.0
 

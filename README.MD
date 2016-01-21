@@ -154,7 +154,7 @@ escape(str);
 * Version 1.1
   * Mobile theme for "/show/" page.
   * Make an indicator to let you know if there is an update for the site.
-  * Make a `readme.txt` file to explain how to update files without loosing your info.
+  * Make a `update.txt` file to explain how to update files without loosing your info.
 
 #### What I will not do
 

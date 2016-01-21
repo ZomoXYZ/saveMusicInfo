@@ -1,0 +1,6 @@
+Thank you for downloading my "Save Music Info" web application.  Below are the steps on how to update this app without loosing any of your saved songs.
+
+1. Download all the files with this link: https://github.com/jaketr00/saveMusicInfo/archive/master.zip
+2. Extract the ZIP file
+3. Drag and drop all the files to the location where this text file is located
+4. Make sure to NEVER delete or replace any XML (.xml) file.
