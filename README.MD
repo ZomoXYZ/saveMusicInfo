@@ -129,8 +129,6 @@ escape(str);
 
 ## To Do
 
-* Make a `readme.txt` file to explain how to update files without loosing your info.
-* Make an indicator to let you know if there is an update for the site.
 * Make an indicator to let you know if the song you are importing is already saved.
   * Or a very similar song (same song different album) is saved.
 * Make "/show/backups" and "/show/edit" able to be accessed with links throughout the site.
@@ -153,8 +151,10 @@ escape(str);
 
 ## Done
 
-* Mobile theme for "/show/" page.
-  * Version 1.1
+* Version 1.1
+  * Mobile theme for "/show/" page.
+  * Make an indicator to let you know if there is an update for the site.
+  * Make a `readme.txt` file to explain how to update files without loosing your info.
 
 #### What I will not do
 
