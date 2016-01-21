@@ -1,3 +1,7 @@
+# Version 1.1
+
+* Added Mobile Theme
+
 # Version 1.0
 
 Original release.

@@ -133,10 +133,7 @@ escape(str);
 * Make an indicator to let you know if there is an update for the site.
 * Make an indicator to let you know if the song you are importing is already saved.
   * Or a very similar song (same song different album) is saved.
-* Mobile theme for "/show/" page.
 * Make "/show/backups" and "/show/edit" able to be accessed with links throughout the site.
-* ~~Add a button to start a YouTube video for the song to easily listen~~
-  * This is too much of a hastle as YouTube APIs need "points" to use, and everyone who downloads this site will need 100+ "points" to do this.
 * Make global options:
   * Make TimeZone editable without changing the Code.
   * Only able to add from local machine.
@@ -154,10 +151,17 @@ escape(str);
   * Exportable options.
   * Importable options.
 
+## Done
+
+* Mobile theme for "/show/" page.
+  * Version 1.1
+
 #### What I will not do
 
 * Full mobile support
   * "/show/backups" and "/show/edit" pages will not have a mobile theme.
+* Add a button to start a YouTube video for the song to easily listen
+  * This is too much of a hastle as YouTube APIs need "points" to use, and everyone who downloads this site will need 100+ "points" to do this.
 
 # License
 

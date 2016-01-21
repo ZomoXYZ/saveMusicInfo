@@ -49,7 +49,10 @@
 ?>
 
 <title>Error</title>
-<h1>Please enter correct info</h1>
+Redirecting to /show/.  If you are not redirected please click <a href="show">here</a>.
+<script>
+(function() {location.replace('show')})();
+</script>
 
 <?php
         
