@@ -1,3 +1,11 @@
+# Version 1.2
+
+* Very basic settings at "/settings/"
+  * Change time zone
+  * Custom theme
+* Made an indicator to let you know that the song you are importing is already saved or a very similar song is already saved (same song different album).
+* Minor bug fixes/unimportant features
+
 # Version 1.1
 
 * Mobile theme for "/show/" page.

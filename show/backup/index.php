@@ -1,4 +1,21 @@
 <?php
+
+    $settings = @simplexml_load_file('../../settings/settings.xml');
+    if ($settings['first'] == 'true') {
+        
+?>
+
+<script>window.location.replace('../../settings?profile=1&first')</script>
+
+<?php
+        
+    }
+    /*foreach($settings->profile as $findProfile) {
+        if ($findProfile['active'] == '1') {
+            $profile = $findProfile;
+        };
+    };*/
+    $profile = $settings->profile;
     
     if (isset($_GET['backup'])) {
     
@@ -58,16 +75,17 @@
                 };
                 
                 if ($eachtim == $randnum) {
-                    echo '<head><title>Backup '.urldecode($_GET['backup']).'</title><link rel="shortcut icon" type="image/jpeg" href="'.$resArr->results[0]->artworkUrl60.'"><link rel="stylesheet" href="../main.css"></head>';
+                    echo '<head><title>Backup '.urldecode($_GET['backup']).'</title><link rel="shortcut icon" type="image/jpeg" href="'.$resArr->results[0]->artworkUrl60.'"><link rel="stylesheet" href="../themes/'.$profile->themeName.'/main.css"></head>';
                 };
                 
                 $oldvar = $GLOBALS['bodytext'];
-                $currentvar = '<div id="song"><img src="'.str_replace('100x100','400x400',$resArr->results[0]->artworkUrl100).'"><div id="allinfo"><div id="songname"><a target="_blank" href="https://www.google.com/search?q='.urlencode($song->artist).'+-+'.urlencode($song->songname).'">'.$song->songname.'</a></div><div id="album"><a target="_blank" href="https://www.google.com/search?q='.urlencode($song->artist).'+-+'.urlencode($song->album).'">'.$song->album.'</a></div><div id="artist"><a target="_blank" href="https://www.google.com/search?q='.urlencode($song->artist).'">'.$song->artist.'</a></div><div id="info"><div id="timeAdded"><div id="dayOfWeek">'.$song->info->timeAdded->dayOfWeek.'</div><div id="date"><div id="month">'.$song->info->timeAdded->date->month.'</div><div id="day">'.$song->info->timeAdded->date->day.'</div><div id="year">'.$song->info->timeAdded->date->year.'</div></div><div id="time"><div id="hour">'.$song->info->timeAdded->time->hour.'</div><div id="min">'.$song->info->timeAdded->time->min.'</div><div id="sec">'.$song->info->timeAdded->time->sec.'</div><div id="period">'.$song->info->timeAdded->time->period.'</div></div></div></div></div></div>';
+                $currentvar = '<div id="song"><div id="img"><a name="'.urlencode($song->artist).'+-+'.urlencode($song->songname).'" href="#'.urlencode($song->artist).'+-+'.urlencode($song->songname).'"><img id="artwork" src="'.str_replace('100x100','1200x1200',$resArr->results[0]->artworkUrl100).'"></a></div><div id="allinfo"><div id="songinfo"><div id="songname"><a target="_blank" href="https://www.google.com/search?q='.urlencode($song->artist).'+-+'.urlencode($song->songname).'">'.$song->songname.'</a></div><div id="album"><a target="_blank" href="https://www.google.com/search?q='.urlencode($song->artist).'+-+'.urlencode($song->album).'">'.$song->album.'</a></div><div id="artist"><a target="_blank" href="https://www.google.com/search?q='.urlencode($song->artist).'">'.$song->artist.'</a></div></div><div id="info"><div id="timeAdded"><div id="dayOfWeek">'.$song->info->timeAdded->dayOfWeek.'</div><div id="date"><div id="month">'.$song->info->timeAdded->date->month.'</div><div id="day">'.$song->info->timeAdded->date->day.'</div><div id="year">'.$song->info->timeAdded->date->year.'</div></div><div id="time"><div id="hour">'.$song->info->timeAdded->time->hour.'</div><div id="min">'.$song->info->timeAdded->time->min.'</div><div id="sec">'.$song->info->timeAdded->time->sec.'</div><div id="period">'.$song->info->timeAdded->time->period.'</div></div></div></div></div></div>';
             
                 $GLOBALS['bodytext'] = $oldvar.$currentvar;
             
             };
-        
+            
+            echo '<script>(function() {var hash;hash = window.location.hash;window.location.replace(\'#\');setTimeout(function() {window.location.replace(hash);}, 10);})();</script>';
             echo '<body>';
             echo $bodytext;
             echo '<div id="backbutton" style="position:fixed;top:5px;right:5px;"><a href="../backup/">Back</a></div>';
@@ -117,7 +135,7 @@
                 $resArr = json_decode($response);
             };
         
-            echo '<head><title>Backup '.urldecode($_GET['backup']).'</title><link rel="shortcut icon" type="image/jpeg" href="'.$resArr->results[0]->artworkUrl60.'"><link rel="stylesheet" href="../main.css"></head>';
+            echo '<head><title>Backup '.urldecode($_GET['backup']).'</title><link rel="shortcut icon" type="image/jpeg" href="'.$resArr->results[0]->artworkUrl60.'"></head>';
          
         };
         
@@ -207,11 +225,11 @@
                 $resArr = json_decode($response);
             };
         
-            echo '<head><title>Backup '.urldecode($_GET['backup']).'</title><link rel="shortcut icon" type="image/jpeg" href="'.$resArr->results[0]->artworkUrl60.'"><link rel="stylesheet" href="../main.css"></head>';
+            echo '<head><title>Backup '.urldecode($_GET['backup']).'</title><link rel="shortcut icon" type="image/jpeg" href="'.$resArr->results[0]->artworkUrl60.'"></head>';
          
         };
         
-        echo '<link rel="stylesheet" href="list.css">';
+        echo '<link rel="stylesheet" href="../themes/'.$profile->themeName.'/list.css">';
         
         $dir = '../../backup/';
         $files = scandir($dir);

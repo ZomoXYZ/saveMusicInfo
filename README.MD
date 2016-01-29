@@ -118,10 +118,6 @@ escape(str);
 
 # Notes
 
-1. Timezone is in UTC, you can change this on
- * `/index.php`, line 5
- * `/show/edit/index.php`, line 75
-
 ### Other Projects used in this
 
 * [Open Sans](https://www.google.com/fonts/specimen/Open+Sans) (Light, Regular, and SemiBold)
@@ -129,18 +125,17 @@ escape(str);
 
 ## To Do
 
-* Make an indicator to let you know if the song you are importing is already saved.
-  * Or a very similar song (same song different album) is saved.
+
 * Make "/show/backups" and "/show/edit" able to be accessed with links throughout the site.
 * Make global options:
-  * Make TimeZone editable without changing the Code.
+  * ~~Make TimeZone editable without changing the Code.~~
   * Only able to add from local machine.
   * Whitelist machines allowed to add.
   * Blacklist machines allowed to add.
   * Only able to edit from local machine.
   * Whitelist machines allowed to edit.
   * Blacklist machines allowed to edit.
-  * Custom Theme.
+  * ~~Custom Theme.~~
   * Allow local options (using cookies).
   * Make default local options.
 * Make local options (using cookies):
@@ -151,10 +146,14 @@ escape(str);
 
 ## Done
 
-* Version 1.1
-  * Mobile theme for "/show/" page.
-  * Make an indicator to let you know if there is an update for the site.
-  * Make a `update.txt` file to explain how to update files without loosing your info.
+[Changelog](https://github.com/jaketr00/saveMusicInfo/blob/master/changelog.MD)
+
+* Version 1.2
+  * Very basic settings at "/settings/"
+    * Change time zone
+    * Custom theme
+  * Minor bug fixes/unimportant features
+  * Made an indicator to let you know that the song you are importing is already saved or a very similar song is already saved (same song different album).
 
 #### What I will not do
 

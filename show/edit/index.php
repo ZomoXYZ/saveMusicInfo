@@ -1,4 +1,21 @@
 <?php
+
+    $settings = @simplexml_load_file('../../settings/settings.xml');
+    if ($settings['first'] == 'true') {
+        
+?>
+
+<script>window.location.replace('../../settings?profile=1&first')</script>
+
+<?php
+        
+    }
+    /*foreach($settings->profile as $findProfile) {
+        if ($findProfile['active'] == '1') {
+            $profile = $findProfile;
+        };
+    };*/
+    $profile = $settings->profile;
     
     if (isset($_GET['delete']) && !isset($_GET['confirm'])) {
         
@@ -42,7 +59,7 @@
                 $resArr = json_decode($response);
             };
         
-            echo '<head><title>Remove '.urldecode($_GET['backup']).'</title><link rel="shortcut icon" type="image/jpeg" href="'.$resArr->results[0]->artworkUrl60.'"><link rel="stylesheet" href="../main.css"></head>';
+            echo '<head><title>Remove '.urldecode($_GET['backup']).'</title><link rel="shortcut icon" type="image/jpeg" href="'.$resArr->results[0]->artworkUrl60.'"></head>';
          
         };
         
@@ -72,7 +89,7 @@
         
     }elseif (isset($_GET['delete']) && isset($_GET['confirm'])) {
         
-        date_default_timezone_set("UTC");
+        date_default_timezone_set($profile->timeZone);
         
         $file = '../../info.xml';
         
@@ -169,17 +186,17 @@
                 };
                 
                 if ($eachtim == $randnum) {
-                    echo '<head><title>Edit Songs</title><link rel="shortcut icon" type="image/jpeg" href="'.$resArr->results[0]->artworkUrl60.'"><link rel="stylesheet" href="../main.css"><link rel="stylesheet" href="edit.css"></head>';
+                    echo '<head><title>Edit Songs</title><link rel="shortcut icon" type="image/jpeg" href="'.$resArr->results[0]->artworkUrl60.'"><link rel="stylesheet" href="../themes/'.$profile->themeName.'/main.css"><link rel="stylesheet" href="../themes/'.$profile->themeName.'/edit.css"></head>';
                 };
                 
                 $oldvar = $GLOBALS['bodytext'];
-                $currentvar = '<div id="song"><div id="img"><img id="artwork" src="'.str_replace('100x100','400x400',$resArr->results[0]->artworkUrl100).'"></div><div id="allinfo"><div id="songname"><div id="songname"><a target="_blank" href="https://www.google.com/search?q='.urlencode($song->artist).'+-+'.urlencode($song->songname).'">'.$song->songname.'</a></div><div id="album"><a target="_blank" href="https://www.google.com/search?q='.urlencode($song->artist).'+-+'.urlencode($song->album).'">'.$song->album.'</a></div><div id="artist"><a target="_blank" href="https://www.google.com/search?q='.urlencode($song->artist).'">'.$song->artist.'</a></div></div><div id="info"><div id="timeAdded"><div id="dayOfWeek">'.$song->info->timeAdded->dayOfWeek.'</div><div id="date"><div id="month">'.$song->info->timeAdded->date->month.'</div><div id="day">'.$song->info->timeAdded->date->day.'</div><div id="year">'.$song->info->timeAdded->date->year.'</div></div><div id="time"><div id="hour">'.$song->info->timeAdded->time->hour.'</div><div id="min">'.$song->info->timeAdded->time->min.'</div><div id="sec">'.$song->info->timeAdded->time->sec.'</div><div id="period">'.$song->info->timeAdded->time->period.'</div></div></div></div></div><div id="controls"><div id="delete"><a href="?delete='.urlencode($song->songname).'">Delete Song</a></div></div></div>';
+                $currentvar = '<div id="song"><div id="img"><a name="'.urlencode($song->artist).'+-+'.urlencode($song->songname).'" href="#'.urlencode($song->artist).'+-+'.urlencode($song->songname).'"><img id="artwork" src="'.str_replace('100x100','1200x1200',$resArr->results[0]->artworkUrl100).'"></a></div><div id="allinfo"><div id="songname"><div id="songname"><a target="_blank" href="https://www.google.com/search?q='.urlencode($song->artist).'+-+'.urlencode($song->songname).'">'.$song->songname.'</a></div><div id="album"><a target="_blank" href="https://www.google.com/search?q='.urlencode($song->artist).'+-+'.urlencode($song->album).'">'.$song->album.'</a></div><div id="artist"><a target="_blank" href="https://www.google.com/search?q='.urlencode($song->artist).'">'.$song->artist.'</a></div></div><div id="info"><div id="timeAdded"><div id="dayOfWeek">'.$song->info->timeAdded->dayOfWeek.'</div><div id="date"><div id="month">'.$song->info->timeAdded->date->month.'</div><div id="day">'.$song->info->timeAdded->date->day.'</div><div id="year">'.$song->info->timeAdded->date->year.'</div></div><div id="time"><div id="hour">'.$song->info->timeAdded->time->hour.'</div><div id="min">'.$song->info->timeAdded->time->min.'</div><div id="sec">'.$song->info->timeAdded->time->sec.'</div><div id="period">'.$song->info->timeAdded->time->period.'</div></div></div><div id="controls"><div id="delete"><a href="?delete='.urlencode($song->songname).'">Delete Song</a></div></div></div></div></div>';
                 
                 $GLOBALS['bodytext'] = $oldvar.$currentvar;
                 
             };
             
-            echo '<body>'.$bodytext.'</body>';
+            echo '<script>(function() {var hash;hash = window.location.hash;console.log(hash);window.location.replace(\'#\');if (hash.length > 1) setTimeout(function() {window.location.replace(hash)}, 10);})();</script><body>'.$bodytext.'</body>';
             
         };
         

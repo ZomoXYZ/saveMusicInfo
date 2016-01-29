@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<settings>
+    <profile number="1" active="1">
+        <timeZone type="string">UTC</timeZone>
+        <themeName type="string">default</themeName>
+    </profile>
+</settings>

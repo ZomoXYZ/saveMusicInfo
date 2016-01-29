@@ -1,0 +1,323 @@
+@font-face {
+    font-family: 'OpenSans-Light';
+    src: url(fonts/Open_Sans/OpenSans-Light.ttf);
+}
+@font-face {
+    font-family: 'OpenSans-LightItalic';
+    src: url(fonts/Open_Sans/OpenSans-LightItalic.ttf);
+}
+@font-face {
+    font-family: 'OpenSans-Regular';
+    src: url(fonts/Open_Sans/OpenSans-Regular.ttf);
+}
+@font-face {
+    font-family: 'OpenSans-Italic';
+    src: url(fonts/Open_Sans/OpenSans-Italic.ttf);
+}
+@font-face {
+    font-family: 'OpenSans-Semibold';
+    src: url(fonts/Open_Sans/OpenSans-Semibold.ttf);
+}
+@font-face {
+    font-family: 'OpenSans-SemiboldItalic';
+    src: url(fonts/Open_Sans/OpenSans-SemiboldItalic.ttf);
+}
+@font-face {
+    font-family: 'OpenSans-Bold';
+    src: url(fonts/Open_Sans/OpenSans-Bold.ttf);
+}
+@font-face {
+    font-family: 'OpenSans-BoldItalic';
+    src: url(fonts/Open_Sans/OpenSans-BoldItalic.ttf);
+}
+@font-face {
+    font-family: 'OpenSans-ExtraBold';
+    src: url(fonts/Open_Sans/OpenSans-ExtraBold.ttf);
+}
+@font-face {
+    font-family: 'OpenSans-ExtraBoldItalic';
+    src: url(fonts/Open_Sans/OpenSans-ExtraBoldItalic.ttf);
+}
+body,html{margin:0;padding:0;}
+#alert #alertText {
+    position: fixed;
+    z-index: 100;
+    height: 25px;
+    width: 100%;
+    padding: 5px 15px;
+    font-family: 'OpenSans-Regular';
+    font-size: 15px;
+    display: block;
+    background: #A00;
+    color: #FFF;
+}
+#song {
+    position: relative;
+    font-family: 'OpenSans-Regular';
+    font-size: 15px;
+    cursor: default;
+}
+#song #img, #song img {
+    position: relative;
+}
+#song #allinfo #songname {
+    font-family: 'OpenSans-Light';
+    font-size: 30px;
+}
+#song #allinfo #album a::before {
+    content: 'on: ';
+    font-family: 'OpenSans-SemiBold';
+    color: #999;
+}
+#song #allinfo #artist a::before {
+    content: 'by: ';
+    font-family: 'OpenSans-SemiBold';
+    color: #999;
+}
+#song #allinfo #info #timeAdded::before {
+    content: 'saved: ';
+    font-family: 'OpenSans-SemiBold';
+    color: #999;
+}
+a {
+    color: black;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+a:active {
+    color: rgb(0,0,155);
+}
+#song #allinfo #info #timeAdded div {
+    display: inline;
+}
+#song #allinfo #info #timeAdded #dayOfWeek::after {
+    content: ', ';
+}
+#song #allinfo #info #timeAdded #date #month::after {
+    content: ' ';
+}
+#song #allinfo #info #timeAdded #date #day::after {
+    content: ' ';
+}
+#song #allinfo #info #timeAdded #date #year::after {
+    content: '; ';
+}
+#song #allinfo #info #timeAdded #time #hour::after {
+    content: ':';
+}
+#song #allinfo #info #timeAdded #time #min::after {
+    content: ':';
+}
+#song #allinfo #info #timeAdded #time #sec::after {
+    content: ' ';
+}
+@media (orientation:landscape) {
+    #song #img, #song #artwork {
+        width: 400px;
+        height: 400px;
+    }
+    #song #img::after {
+        content: '';
+        position: absolute;
+        right: 0;
+        width: 5px;
+        height: 100%;
+        -webkit-box-shadow: 1px 0px 10px 1px rgba(0,0,0,1);
+        -moz-box-shadow: 1px 0px 10px 1px rgba(0,0,0,1);
+        box-shadow: 1px 0px 10px 1px rgba(0,0,0,1);
+        z-index: -1;
+    }
+    #song #allinfo {
+        top: 0;
+        position: absolute;
+        display: block;
+        box-sizing: border-box;
+        height: 400px;
+        width: 100%;
+        margin-left: 415px;
+        padding-left: 5px;
+    }
+    #song #allinfo::before {
+        content: '';
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        bottom: 0px;
+        left: -2px;
+        /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#cccccc+0,cccccc+100&0+0,1+5,1+55,0+70,0+100 */
+background: -moz-linear-gradient(top,  rgba(204,204,204,0) 0%, rgba(204,204,204,1) 5%, rgba(204,204,204,1) 55%, rgba(204,204,204,0) 70%, rgba(204,204,204,0) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top,  rgba(204,204,204,0) 0%,rgba(204,204,204,1) 5%,rgba(204,204,204,1) 55%,rgba(204,204,204,0) 70%,rgba(204,204,204,0) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom,  rgba(204,204,204,0) 0%,rgba(204,204,204,1) 5%,rgba(204,204,204,1) 55%,rgba(204,204,204,0) 70%,rgba(204,204,204,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00cccccc', endColorstr='#00cccccc',GradientType=0 ); /* IE6-9 */
+        z-index: -2;
+    }
+    #song #allinfo::after {
+        content: '';
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        bottom: 0px;
+        left: 0px;
+        background: white;
+        z-index: -1;
+    }
+    #song #allinfo #songinfo {
+        margin-top: 20px;
+    }
+}
+@media (min-width:981px) {
+    #song #img, #song #img #artwork {
+        width: 400px;
+        height: 400px;
+    }
+    #song #img::after {
+        content: '';
+        position: absolute;
+        right: 0;
+        width: 5px;
+        height: 100%;
+        -webkit-box-shadow: 1px 0px 10px 1px rgba(0,0,0,1);
+        -moz-box-shadow: 1px 0px 10px 1px rgba(0,0,0,1);
+        box-shadow: 1px 0px 10px 1px rgba(0,0,0,1);
+        z-index: -1;
+    }
+    #song #allinfo {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        top: 0;
+        width: auto !important;
+        box-sizing: border-box;
+        height: 400px;
+        margin-left: 415px;
+        padding-left: 5px;
+    }
+    #song #allinfo::before {
+        content: '';
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        bottom: 0px;
+        left: -2px;
+        background: -moz-linear-gradient(top,  rgba(204,204,204,0) 0%, rgba(204,204,204,0) 10%, rgba(204,204,204,1) 25%, rgba(204,204,204,1) 75%, rgba(204,204,204,0.01) 90%, rgba(204,204,204,0.01) 100%);
+        background: -webkit-linear-gradient(top,  rgba(204,204,204,0) 0%,rgba(204,204,204,0) 10%,rgba(204,204,204,1) 25%,rgba(204,204,204,1) 75%,rgba(204,204,204,0.01) 90%,rgba(204,204,204,0.01) 100%);
+        background: linear-gradient(to bottom,  rgba(204,204,204,0) 0%,rgba(204,204,204,0) 10%,rgba(204,204,204,1) 25%,rgba(204,204,204,1) 75%,rgba(204,204,204,0.01) 90%,rgba(204,204,204,0.01) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00cccccc', endColorstr='#03cccccc',GradientType=0 );
+        z-index: -2;
+    }
+    #song #allinfo::after {
+        content: '';
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        bottom: 0px;
+        left: 0px;
+        background: white;
+        z-index: -1;
+    }
+}
+@media (orientation:portrait) {
+@media (max-width:980px) and (min-width:351px) {
+    #song {
+        font-size: 25px;
+    }
+    #song #img, #song #artwork {
+        width: 100%;
+    }
+    #song #allinfo {
+        position: absolute;
+        top: 0;
+        left: 0;
+        box-sizing: border-box;
+        width: 100%;
+        height: 100%;
+        display: block;
+        flex-direction: column;
+        justify-content: center;
+        color: white;
+        text-shadow: 0 0 5px #000;
+    }
+    #song #allinfo #songinfo {
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 25px;
+        padding-bottom: 50px;
+        /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&0.5+0,0.5+75,0+100 */
+background: -moz-linear-gradient(top,  rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.5) 75%, rgba(0,0,0,0) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top,  rgba(0,0,0,0.5) 0%,rgba(0,0,0,0.5) 75%,rgba(0,0,0,0) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom,  rgba(0,0,0,0.5) 0%,rgba(0,0,0,0.5) 75%,rgba(0,0,0,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#80000000', endColorstr='#00000000',GradientType=0 ); /* IE6-9 */
+    }
+    #song #allinfo #songname {
+        font-size: 50px;
+    }
+    #song #allinfo #info {
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+        position: absolute;
+        bottom: 0px;
+        padding: 25px;
+        /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&0+0,0.5+25,0.5+100 */
+background: -moz-linear-gradient(top,  rgba(0,0,0,0) 0%, rgba(0,0,0,0.5) 25%, rgba(0,0,0,0.5) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.5) 25%,rgba(0,0,0,0.5) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.5) 25%,rgba(0,0,0,0.5) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#80000000',GradientType=0 ); /* IE6-9 */
+    }
+    a {
+        display: block;
+        color: white;
+        text-shadow: 0 0 5px #000;
+        text-decoration: none;
+    }
+    @media (max-width:800px) {
+        #song {
+            font-size: 15px;
+        }
+        #song #allinfo #songinfo {
+            padding: 15px;
+            padding-bottom: 30px;
+        }
+        #song #allinfo #songname {
+            font-size: 30px;
+        }
+    }
+    @media (max-width:599px) {
+        #song {
+            font-size: 10px;
+        }
+        #song #allinfo #songinfo {
+            padding: 10px;
+            padding-bottom: 20px;
+        }
+        #song #allinfo #songname {
+            font-size: 20px;
+        }
+        #song #allinfo #info {
+            padding: 10px;
+        }
+    }
+}
+}
+@media (max-width:350px) {
+    #song {
+        font-size: 7px;
+    }
+    #song #img, #song #artwork {
+        width: 100%;
+    }
+    #song #allinfo {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding-left: 5px;
+    }
+    #song #allinfo #songname {
+        font-size: 14px;
+    }
+}
