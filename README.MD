@@ -155,7 +155,7 @@ escape(str);
   * Minor bug fixes/unimportant features
   * Made an indicator to let you know that the song you are importing is already saved or a very similar song is already saved (same song different album).
 
-#### What I will not do
+## What I will not do
 
 * Full mobile support
   * "/show/backups" and "/show/edit" pages will not have a mobile theme.
