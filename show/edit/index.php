@@ -48,18 +48,39 @@
                 return $content;
             };
             
-            $response = get_web_page('http://itunes.apple.com/search?country=US&media=music&term='.urlencode($xmlForIcon->song[$randnum]->artist).'+'.urlencode($xmlForIcon->song[$randnum]->album));
-            $resArr = array();
-            $resArr = json_decode($response);
-            if (!isset($resArr->results[0]->artworkUrl100) || empty($resArr->results[0]->artworkUrl60) || !$resArr->results[0]->artworkUrl60) {
-                $urlartistreplace = urlencode(preg_replace("/(\s[a-zA-Z]+\.)?\s([a-zA-Z0-9_&#\-\\\\\/%\(\)]+)$/", '', preg_replace('/\+/', ' ', urlencode($xmlForIcon->song[$randnum]->artist))));
-                $urlalbumreplace = urlencode(preg_replace("/(\s[a-zA-Z]+\.)?\s([a-zA-Z0-9_&#\-\\\\\/%\(\)]+)$/", '', preg_replace('/\+/', ' ', urlencode($xmlForIcon->song[$randnum]->album))));
-                $response = get_web_page('http://itunes.apple.com/search?country=US&media=music&term='.$urlartistreplace.'+'.$urlalbumreplace);
+            if (!file_exists('../img/')) {
+                mkdir('../img/');
+            };
+            $dir = '../img/'.preg_replace('/[\<\>\:\"\/\\\\\|\?\*]/', '', $xmlForIcon->song[$randnum]->artist).' - '.preg_replace('/[\<\>\:\"\/\\\\\|\?\*]/', '', $xmlForIcon->song[$randnum]->album).'/';
+            if (!file_exists($dir) || !file_exists($dir.'60x60.jpg') || !file_exists($dir.'1200x1200.jpg')) {
+                
+                $response = get_web_page('http://itunes.apple.com/search?country=US&media=music&term='.urlencode($xmlForIcon->song[$randnum]->artist).'+'.urlencode($xmlForIcon->song[$randnum]->album));
                 $resArr = array();
                 $resArr = json_decode($response);
+                if (!isset($resArr->results[0]->artworkUrl100) || empty($resArr->results[0]->artworkUrl60) || !$resArr->results[0]->artworkUrl60) {
+                    $urlartistreplace = urlencode(preg_replace("/(\s[a-zA-Z]+\.)?\s([a-zA-Z0-9_&#\-\\\\\/%\(\)]+)$/", '', preg_replace('/\+/', ' ', urlencode($xmlForIcon->song[$randnum]->artist))));
+                    $urlalbumreplace = urlencode(preg_replace("/(\s[a-zA-Z]+\.)?\s([a-zA-Z0-9_&#\-\\\\\/%\(\)]+)$/", '', preg_replace('/\+/', ' ',  urlencode($xmlForIcon->song[$randnum]->album))));
+                    $response = get_web_page('http://itunes.apple.com/search?country=US&media=music&term='.$urlartistreplace.'+'.$urlalbumreplace);
+                    $resArr = array();
+                    $resArr = json_decode($response);
+                };
+                
+                if (!file_exists($dir)) {
+                    mkdir($dir);
+                }
+                if (!file_exists($dir.'60x60.jpg')) {
+                    copy($resArr->results[0]->artworkUrl60, $dir.'60x60.jpg');
+                }
+                if (!file_exists($dir.'1200x1200.jpg')) {
+                    copy(str_replace('100x100','1200x1200',$resArr->results[0]->artworkUrl100), $dir.'1200x1200.jpg');
+                }
             };
+            
+            $url = '../img/'.str_replace('+', '%20', urlencode(preg_replace('/[\<\>\:\"\/\\\\\|\?\*]/', '', $xmlForIcon->song[$randnum]->artist))).'%20-%20'.str_replace('+', '%20', urlencode(preg_replace('/[\<\>\:\"\/\\\\\|\?\*]/', '', $xmlForIcon->song[$randnum]->album)));
+            $art = $url.'/1200x1200.jpg';
+            $artsmall = $url.'/60x60.jpg';
         
-            echo '<head><title>Remove '.urldecode($_GET['backup']).'</title><link rel="shortcut icon" type="image/jpeg" href="'.$resArr->results[0]->artworkUrl60.'"></head>';
+            echo '<head><title>Backup '.urldecode($_GET['backup']).'</title><link rel="shortcut icon" type="image/jpeg" href="'.$artsmall.'"></head>';
          
         };
         
@@ -174,23 +195,44 @@
                 ++$eachtim;
                 
                 
-                $response = get_web_page('http://itunes.apple.com/search?country=US&media=music&term='.urlencode($song->artist).'+'.urlencode($song->album));
-                $resArr = array();
-                $resArr = json_decode($response);
-                if (!isset($resArr->results[0]->artworkUrl100) || empty($resArr->results[0]->artworkUrl60) || !$resArr->results[0]->artworkUrl60) {
-                    $urlartistreplace = urlencode(preg_replace("/(\s[a-zA-Z]+\.)?\s([a-zA-Z0-9_&#\-\\\\\/%\(\)]+)$/", '', preg_replace('/\+/', ' ', urlencode($song->artist))));
-                    $urlalbumreplace = urlencode(preg_replace("/(\s[a-zA-Z]+\.)?\s([a-zA-Z0-9_&#\-\\\\\/%\(\)]+)$/", '', preg_replace('/\+/', ' ', urlencode($song->album))));
-                    $response = get_web_page('http://itunes.apple.com/search?country=US&media=music&term='.$urlartistreplace.'+'.$urlalbumreplace);
+                if (!file_exists('../img/')) {
+                    mkdir('../img/');
+                };
+                $dir = '../img/'.preg_replace('/[\<\>\:\"\/\\\\\|\?\*]/', '', $song->artist).' - '.preg_replace('/[\<\>\:\"\/\\\\\|\?\*]/', '', $song->album).'/';
+                if (!file_exists($dir) || !file_exists($dir.'60x60.jpg') || !file_exists($dir.'1200x1200.jpg')) {
+                    
+                    $response = get_web_page('http://itunes.apple.com/search?country=US&media=music&term='.urlencode($song->artist).'+'.urlencode($song->album));
                     $resArr = array();
                     $resArr = json_decode($response);
+                    if (!isset($resArr->results[0]->artworkUrl100) || empty($resArr->results[0]->artworkUrl60) || !$resArr->results[0]->artworkUrl60) {
+                        $urlartistreplace = urlencode(preg_replace("/(\s[a-zA-Z]+\.)?\s([a-zA-Z0-9_&#\-\\\\\/%\(\)]+)$/", '', preg_replace('/\+/', ' ',     urlencode($song->artist))));
+                        $urlalbumreplace = urlencode(preg_replace("/(\s[a-zA-Z]+\.)?\s([a-zA-Z0-9_&#\-\\\\\/%\(\)]+)$/", '', preg_replace('/\+/', ' ',  urlencode($song->album))));
+                        $response = get_web_page('http://itunes.apple.com/search?country=US&media=music&term='.$urlartistreplace.'+'.$urlalbumreplace);
+                        $resArr = array();
+                        $resArr = json_decode($response);
+                    };
+                    
+                    if (!file_exists($dir)) {
+                        mkdir($dir);
+                    }
+                    if (!file_exists($dir.'60x60.jpg')) {
+                        copy($resArr->results[0]->artworkUrl60, $dir.'60x60.jpg');
+                    }
+                    if (!file_exists($dir.'1200x1200.jpg')) {
+                        copy(str_replace('100x100','1200x1200',$resArr->results[0]->artworkUrl100), $dir.'1200x1200.jpg');
+                    }
                 };
                 
+                $url = '../img/'.str_replace('+', '%20', urlencode(preg_replace('/[\<\>\:\"\/\\\\\|\?\*]/', '', $song->artist))).'%20-%20'.str_replace('+',    '%20', urlencode(preg_replace('/[\<\>\:\"\/\\\\\|\?\*]/', '', $song->album)));
+                $art = $url.'/1200x1200.jpg';
+                $artsmall = $url.'/60x60.jpg';
+                
                 if ($eachtim == $randnum) {
-                    echo '<head><title>Edit Songs</title><link rel="shortcut icon" type="image/jpeg" href="'.$resArr->results[0]->artworkUrl60.'"><link rel="stylesheet" href="../themes/'.$profile->themeName.'/main.css"><link rel="stylesheet" href="../themes/'.$profile->themeName.'/edit.css"></head>';
+                    echo '<head><title>Edit Songs</title><link rel="shortcut icon" type="image/jpeg" href="'.$artsmall.'"><link rel="stylesheet" href="../themes/'.$profile->themeName.'/main.css"><link rel="stylesheet" href="../themes/'.$profile->themeName.'/edit.css"></head>';
                 };
                 
                 $oldvar = $GLOBALS['bodytext'];
-                $currentvar = '<div id="song"><div id="img"><a name="'.urlencode($song->artist).'+-+'.urlencode($song->songname).'" href="#'.urlencode($song->artist).'+-+'.urlencode($song->songname).'"><img id="artwork" src="'.str_replace('100x100','1200x1200',$resArr->results[0]->artworkUrl100).'"></a></div><div id="allinfo"><div id="songname"><div id="songname"><a target="_blank" href="https://www.google.com/search?q='.urlencode($song->artist).'+-+'.urlencode($song->songname).'">'.$song->songname.'</a></div><div id="album"><a target="_blank" href="https://www.google.com/search?q='.urlencode($song->artist).'+-+'.urlencode($song->album).'">'.$song->album.'</a></div><div id="artist"><a target="_blank" href="https://www.google.com/search?q='.urlencode($song->artist).'">'.$song->artist.'</a></div></div><div id="info"><div id="timeAdded"><div id="dayOfWeek">'.$song->info->timeAdded->dayOfWeek.'</div><div id="date"><div id="month">'.$song->info->timeAdded->date->month.'</div><div id="day">'.$song->info->timeAdded->date->day.'</div><div id="year">'.$song->info->timeAdded->date->year.'</div></div><div id="time"><div id="hour">'.$song->info->timeAdded->time->hour.'</div><div id="min">'.$song->info->timeAdded->time->min.'</div><div id="sec">'.$song->info->timeAdded->time->sec.'</div><div id="period">'.$song->info->timeAdded->time->period.'</div></div></div><div id="controls"><div id="delete"><a href="?delete='.urlencode($song->songname).'">Delete Song</a></div></div></div></div></div>';
+                $currentvar = '<div class="song"><div class="img"><a name="'.urlencode($song->artist).'+-+'.urlencode($song->songname).'" href="#'.urlencode($song->artist).'+-+'.urlencode($song->songname).'"><img class="artwork" src="'.$art.'"></a></div><div class="allinfo"><div class="songname"><div class="songname"><a target="_blank" href="https://www.google.com/search?q='.urlencode($song->artist).'+-+'.urlencode($song->songname).'">'.$song->songname.'</a></div><div class="album"><a target="_blank" href="https://www.google.com/search?q='.urlencode($song->artist).'+-+'.urlencode($song->album).'">'.$song->album.'</a></div><div class="artist"><a target="_blank" href="https://www.google.com/search?q='.urlencode($song->artist).'">'.$song->artist.'</a></div></div><div class="info"><div class="timeAdded"><div class="dayOfWeek">'.$song->info->timeAdded->dayOfWeek.'</div><div class="date"><div class="month">'.$song->info->timeAdded->date->month.'</div><div class="day">'.$song->info->timeAdded->date->day.'</div><div class="year">'.$song->info->timeAdded->date->year.'</div></div><div class="time"><div class="hour">'.$song->info->timeAdded->time->hour.'</div><div class="min">'.$song->info->timeAdded->time->min.'</div><div class="sec">'.$song->info->timeAdded->time->sec.'</div><div class="period">'.$song->info->timeAdded->time->period.'</div></div></div><div class="controls"><div class="delete"><a href="?delete='.urlencode($song->songname).'">Delete Song</a></div></div></div></div></div>';
                 
                 $GLOBALS['bodytext'] = $oldvar.$currentvar;
                 

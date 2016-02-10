@@ -148,17 +148,14 @@ escape(str);
 
 [Changelog](https://github.com/jaketr00/saveMusicInfo/blob/master/changelog.MD)
 
-* Version 1.2
-  * Very basic settings at "/settings/"
-    * Change time zone
-    * Custom theme
-  * Minor bug fixes/unimportant features
-  * Made an indicator to let you know that the song you are importing is already saved or a very similar song is already saved (same song different album).
+* Version 1.3
+  * Massive preformance improvement
+    * Album's artwork will now save on the server/computer, which makes load times much faster
 
 ## What I will not do
 
 * Full mobile support
-  * "/show/backups" and "/show/edit" pages will not have a mobile theme.
+  * "/show/backups" and "/show/edit" pages will not have a propper mobile theme.
 * Add a button to start a YouTube video for the song to easily listen
   * This is too much of a hastle as YouTube APIs need "points" to use, and everyone who downloads this site will need 100+ "points" to do this.
 

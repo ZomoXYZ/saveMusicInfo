@@ -59,24 +59,44 @@
         foreach($xml->song as $song) {
             ++$eachtim;
             
-            
-            $response = get_web_page('http://itunes.apple.com/search?country=US&media=music&term='.urlencode($song->artist).'+'.urlencode($song->album));
-            $resArr = array();
-            $resArr = json_decode($response);
-            if (!isset($resArr->results[0]->artworkUrl100) || empty($resArr->results[0]->artworkUrl60) || !$resArr->results[0]->artworkUrl60) {
-                $urlartistreplace = urlencode(preg_replace("/(\s[a-zA-Z]+\.)?\s([a-zA-Z0-9_&#\-\\\\\/%\(\)]+)$/", '', preg_replace('/\+/', ' ', urlencode($song->artist))));
-                $urlalbumreplace = urlencode(preg_replace("/(\s[a-zA-Z]+\.)?\s([a-zA-Z0-9_&#\-\\\\\/%\(\)]+)$/", '', preg_replace('/\+/', ' ', urlencode($song->album))));
-                $response = get_web_page('http://itunes.apple.com/search?country=US&media=music&term='.$urlartistreplace.'+'.$urlalbumreplace);
+            if (!file_exists('img/')) {
+                mkdir('img/');
+            };
+            $dir = 'img/'.preg_replace('/[\<\>\:\"\/\\\\\|\?\*]/', '', $song->artist).' - '.preg_replace('/[\<\>\:\"\/\\\\\|\?\*]/', '', $song->album).'/';
+            if (!file_exists($dir) || !file_exists($dir.'60x60.jpg') || !file_exists($dir.'1200x1200.jpg')) {
+                
+                $response = get_web_page('http://itunes.apple.com/search?country=US&media=music&term='.urlencode($song->artist).'+'.urlencode($song->album));
                 $resArr = array();
                 $resArr = json_decode($response);
+                if (!isset($resArr->results[0]->artworkUrl100) || empty($resArr->results[0]->artworkUrl60) || !$resArr->results[0]->artworkUrl60) {
+                    $urlartistreplace = urlencode(preg_replace("/(\s[a-zA-Z]+\.)?\s([a-zA-Z0-9_&#\-\\\\\/%\(\)]+)$/", '', preg_replace('/\+/', ' ', urlencode($song->artist))));
+                    $urlalbumreplace = urlencode(preg_replace("/(\s[a-zA-Z]+\.)?\s([a-zA-Z0-9_&#\-\\\\\/%\(\)]+)$/", '', preg_replace('/\+/', ' ',  urlencode($song->album))));
+                    $response = get_web_page('http://itunes.apple.com/search?country=US&media=music&term='.$urlartistreplace.'+'.$urlalbumreplace);
+                    $resArr = array();
+                    $resArr = json_decode($response);
+                };
+                
+                if (!file_exists($dir)) {
+                    mkdir($dir);
+                }
+                if (!file_exists($dir.'60x60.jpg')) {
+                    copy($resArr->results[0]->artworkUrl60, $dir.'60x60.jpg');
+                }
+                if (!file_exists($dir.'1200x1200.jpg')) {
+                    copy(str_replace('100x100','1200x1200',$resArr->results[0]->artworkUrl100), $dir.'1200x1200.jpg');
+                }
             };
             
+            $url = 'img/'.str_replace('+', '%20', urlencode(preg_replace('/[\<\>\:\"\/\\\\\|\?\*]/', '', $song->artist))).'%20-%20'.str_replace('+', '%20', urlencode(preg_replace('/[\<\>\:\"\/\\\\\|\?\*]/', '', $song->album)));
+            $art = $url.'/1200x1200.jpg';
+            $artsmall = $url.'/60x60.jpg';
+            
             if ($eachtim == $randnum) {
-                echo '<head><title id="title">Saved Songs</title><link rel="shortcut icon" type="image/jpeg" href="'.$resArr->results[0]->artworkUrl60.'"><link rel="stylesheet" href="themes/'.$profile->themeName.'/main.css"></head>';
+                echo '<head><title id="title">Saved Songs</title><link rel="shortcut icon" type="image/jpeg" href="'.$artsmall.'"><link rel="stylesheet" href="themes/'.$profile->themeName.'/main.css"></head>';
             };
             
             $oldvar = $GLOBALS['bodytext'];
-            $currentvar = '<div id="song"><div id="img"><a name="'.urlencode($song->artist).'+-+'.urlencode($song->songname).'" href="#'.urlencode($song->artist).'+-+'.urlencode($song->songname).'"><img id="artwork" src="'.str_replace('100x100','1200x1200',$resArr->results[0]->artworkUrl100).'"></a></div><div id="allinfo"><div id="songinfo"><div id="songname"><a target="_blank" href="https://www.google.com/search?q='.urlencode($song->artist).'+-+'.urlencode($song->songname).'">'.$song->songname.'</a></div><div id="album"><a target="_blank" href="https://www.google.com/search?q='.urlencode($song->artist).'+-+'.urlencode($song->album).'">'.$song->album.'</a></div><div id="artist"><a target="_blank" href="https://www.google.com/search?q='.urlencode($song->artist).'">'.$song->artist.'</a></div></div><div id="info"><div id="timeAdded"><div id="dayOfWeek">'.$song->info->timeAdded->dayOfWeek.'</div><div id="date"><div id="month">'.$song->info->timeAdded->date->month.'</div><div id="day">'.$song->info->timeAdded->date->day.'</div><div id="year">'.$song->info->timeAdded->date->year.'</div></div><div id="time"><div id="hour">'.$song->info->timeAdded->time->hour.'</div><div id="min">'.$song->info->timeAdded->time->min.'</div><div id="sec">'.$song->info->timeAdded->time->sec.'</div><div id="period">'.$song->info->timeAdded->time->period.'</div></div></div></div></div></div>';
+            $currentvar = '<div class="song"><div class="img"><a name="'.urlencode($song->artist).'+-+'.urlencode($song->songname).'" href="#'.urlencode($song->artist).'+-+'.urlencode($song->songname).'"><img class="artwork" src="'.$art.'"></a><span class="number">'.$eachtim.'</span></div><div class="allinfo"><div class="songinfo"><div class="songname"><a target="_blank" href="https://www.google.com/search?q='.urlencode($song->artist).'+-+'.urlencode($song->songname).'">'.$song->songname.'</a></div><div class="album"><a target="_blank" href="https://www.google.com/search?q='.urlencode($song->artist).'+-+'.urlencode($song->album).'">'.$song->album.'</a></div><div class="artist"><a target="_blank" href="https://www.google.com/search?q='.urlencode($song->artist).'">'.$song->artist.'</a></div></div><div class="info"><div class="timeAdded"><div class="dayOfWeek">'.$song->info->timeAdded->dayOfWeek.'</div><div class="date"><div class="month">'.$song->info->timeAdded->date->month.'</div><div class="day">'.$song->info->timeAdded->date->day.'</div><div class="year">'.$song->info->timeAdded->date->year.'</div></div><div class="time"><div class="hour">'.$song->info->timeAdded->time->hour.'</div><div class="min">'.$song->info->timeAdded->time->min.'</div><div class="sec">'.$song->info->timeAdded->time->sec.'</div><div class="period">'.$song->info->timeAdded->time->period.'</div></div></div></div></div></div>';
             
             $GLOBALS['bodytext'] = $oldvar.$currentvar;
             
@@ -105,6 +125,68 @@
         
     };
     
+    /*var getAverageColor = (function(window, document, undefined){
+	return function(imageURL, options}){
+		options = {
+			// image split into blocks of x pixels wide, 1 high
+			blocksize: options.blocksize || 5,
+			fallbackColor: options.fallbackColor || '#000'
+		};
+
+		var img = document.createElement('img'),
+			canvas = document.createElement('canvas'),
+			context = canvas.getContext && canvas.getContext('2d'),
+			i = -4,
+			count = 0,
+			rgb = {
+				r: 0,
+				g: 0,
+				b: 0
+			},
+			data, width, height, length;
+
+		if(!context){
+			return options.fallback_color;
+		}
+
+		height = canvas.height = img.naturalHeight || img.offsetHeight || img.height;
+		width = canvas.width = img.naturalWidth || img.offsetWidth || img.width;
+
+		// create a dom element for the image
+		img.src = imageURL;
+		img.id = 'averageColorImg';
+		img.style.display = 'none';
+
+		// draw image in canvas to make calculation easier
+		context.drawImage(img, 0, 0);
+
+		try {
+			data = context.getImageData(0, 0, width, height);
+		}
+		catch(e){
+			// security error, img on different domain
+			return options.fallback_color;
+		}
+
+		length = data.data.length;
+
+		// get rgb values for each pixel at the end of the block
+		while((i += blocksize * 4) < length){
+			++count;
+			rgb.r += data.data[i];
+			rgb.g += data.data[i+1];
+			rgb.b += data.data[i+2];
+		}
+
+		// ~~used to floor values
+		rgb.r = ~~(rgb.r/count);
+		rgb.g = ~~(rgb.g/count);
+		rgb.b = ~~(rgb.b/count);
+
+		return 'rgb('+rgb.r+', '+rgb.g+', '+rgb.b+')';
+	};
+})(this, this.document);*/
+    
     (function() {
         
         var hash;
@@ -127,6 +209,11 @@
         xhttp.send();
         
         checkVersion();
+        
+        for(var i=0;document.getElementsByTagName('img').length>i;i++) {
+            //document.getElementsByClassName('number')[i].setAttribute('style', 'color:'+getAverageColor(document.getElementsByClassName('artwork')[i]))
+        }
+        
     })();
     
     function updatePage(currentXML) {
@@ -271,6 +358,7 @@
             document.getElementById('alert').removeChild(document.getElementById('alert').lastChild);
         };
     };
+    
 </script>
 
 <?php

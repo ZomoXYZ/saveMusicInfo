@@ -1,3 +1,8 @@
+# Version 1.3
+
+* Massive preformance improvement
+  * Album's artwork will now save on the server/computer, which makes load times much faster
+
 # Version 1.2
 
 * Very basic settings at "/settings/"
