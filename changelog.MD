@@ -1,3 +1,8 @@
+# Version 1.4
+
+* Visual improvements
+* Minor bug fixes
+
 # Version 1.3
 
 * Massive preformance improvement

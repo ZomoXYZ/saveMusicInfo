@@ -100,13 +100,13 @@
                 };
                 
                 $oldvar = $GLOBALS['bodytext'];
-                $currentvar = '<div class="song"><div class="img"><a name="'.urlencode($song->artist).'+-+'.urlencode($song->songname).'" href="#'.urlencode($song->artist).'+-+'.urlencode($song->songname).'"><img class="artwork" src="'.$art.'"></a></div><div class="allinfo"><div class="songinfo"><div class="songname"><a target="_blank" href="https://www.google.com/search?q='.urlencode($song->artist).'+-+'.urlencode($song->songname).'">'.$song->songname.'</a></div><div class="album"><a target="_blank" href="https://www.google.com/search?q='.urlencode($song->artist).'+-+'.urlencode($song->album).'">'.$song->album.'</a></div><div class="artist"><a target="_blank" href="https://www.google.com/search?q='.urlencode($song->artist).'">'.$song->artist.'</a></div></div><div class="info"><div class="timeAdded"><div class="dayOfWeek">'.$song->info->timeAdded->dayOfWeek.'</div><div class="date"><div class="month">'.$song->info->timeAdded->date->month.'</div><div class="day">'.$song->info->timeAdded->date->day.'</div><div class="year">'.$song->info->timeAdded->date->year.'</div></div><div class="time"><div class="hour">'.$song->info->timeAdded->time->hour.'</div><div class="min">'.$song->info->timeAdded->time->min.'</div><div class="sec">'.$song->info->timeAdded->time->sec.'</div><div class="period">'.$song->info->timeAdded->time->period.'</div></div></div></div></div></div>';
+                $currentvar = '<div class="song"><div class="img"><a name="'.urlencode($song->artist).'+-+'.urlencode($song->songname).'" href="#'.urlencode($song->artist).'+-+'.urlencode($song->songname).'"><img class="artwork" src="'.$art.'"></a><span class="number">'.$eachtim.'</span></div><div class="allinfo"><div class="songinfo"><div class="songname"><a target="_blank" href="https://www.google.com/search?q='.urlencode($song->artist).'+-+'.urlencode($song->songname).'">'.$song->songname.'</a></div><div class="album"><a target="_blank" href="https://www.google.com/search?q='.urlencode($song->artist).'+-+'.urlencode($song->album).'">'.$song->album.'</a></div><div class="artist"><a target="_blank" href="https://www.google.com/search?q='.urlencode($song->artist).'">'.$song->artist.'</a></div></div><div class="info"><div class="timeAdded"><div class="dayOfWeek">'.$song->info->timeAdded->dayOfWeek.'</div><div class="date"><div class="month">'.$song->info->timeAdded->date->month.'</div><div class="day">'.$song->info->timeAdded->date->day.'</div><div class="year">'.$song->info->timeAdded->date->year.'</div></div><div class="time"><div class="hour">'.$song->info->timeAdded->time->hour.'</div><div class="min">'.$song->info->timeAdded->time->min.'</div><div class="sec">'.$song->info->timeAdded->time->sec.'</div><div class="period">'.$song->info->timeAdded->time->period.'</div></div></div></div></div></div>';
             
                 $GLOBALS['bodytext'] = $oldvar.$currentvar;
             
             };
             
-            echo '<script>(function() {var hash;hash = window.location.hash;console.log(hash);window.location.replace(\'#\');if (hash.length > 1) setTimeout(function() {window.location.replace(hash)}, 10);})();</script>';
+            echo '<script>(function() {var hash;hash = window.location.hash;console.log(hash);if (hash.length > 1) {window.location.replace(\'#\');setTimeout(function() {window.location.replace(hash)}, 10);};})();</script>';
             echo '<body>';
             echo $bodytext;
             echo '<div id="backbutton" style="position:fixed;top:5px;right:5px;"><a href="../backup/">Back</a></div>';
@@ -277,29 +277,44 @@
         $files = scandir($dir);
         
         $filenum = 0;
-        echo '<ul id="ul">';
+        //echo '<ul id="ul">';
+        echo '<table>';
         foreach($files as $file) {
             if ($filenum === 0 || $filenum === 1) {}else {
                 
                 $xml = @simplexml_load_file('../../backup/'.$file);
                 $songs = count($xml->song);
-                
                 if ($file !== '.DS_Store') {
-                    echo '<li id="'.$songs.'" name="'.$songs.'"><span><a id="a" href="?backup='.urlencode($file).'">'.$file.' ('.$xml['id'].') ('.$songs.' songs)</a> <a id="apply" href="?apply='.urlencode($file).'">Apply</a></span></li>';
+                    echo '<tr name="'.$songs.'">',
+                        '<td>',
+                        '<a href="?backup='.urlencode($file).'">'.$file.'</a>',
+                        '</td>',
+                        '<td>',
+                        '<a href="?backup='.urlencode($file).'">('.$xml['id'].')</a>',
+                        '</td>',
+                        '<td>',
+                        '<a href="?backup='.urlencode($file).'">('.$songs.' songs)</a>',
+                        '</td>',
+                        '<td>',
+                        '<a class="apply" href="?apply='.urlencode($file).'">Apply</a>',
+                        '</td>',
+                        '</tr>';
+                    //echo '<li id="'.$songs.'" name="'.$songs.'"><span><a id="a" href="?backup='.urlencode($file).'">'.$file.' ('.$xml['id'].') ('.$songs.' songs)</a> <a id="apply" href="?apply='.urlencode($file).'">Apply</a></span></li>';
                 };
                 
             };
             
             ++$filenum;
         };
-        echo '</ul>';
+                echo '</table>';
+        //echo '</ul>';
         
 ?>
 
 <script>
     (function() {
         
-        var numOfLi = document.getElementById('ul').childNodes.length;
+        /*var numOfLi = document.getElementById('ul').childNodes.length;
         var numOfTimes = 0;
         var displayNum = 0;
         
@@ -355,8 +370,74 @@
             
         };
         
-        document.getElementById('ul').remove();
+        document.getElementById('ul').remove();*/
         
+        
+        var numOfTr = document.getElementsByTagName('table')[0].childNodes.length > document.getElementsByTagName('tbody')[0].childNodes.length ? document.getElementsByTagName('table')[0].childNodes.length : document.getElementsByTagName('tbody')[0].childNodes.length;
+        var numOfTimes = 0;
+        var displayNum = 0;
+        
+        var newlist = document.createElement('table');
+        document.body.appendChild(newlist);
+        
+        var titletr = document.createElement('tr');
+        titletr.setAttribute('name', 'title');
+        
+        titletr.innerHTML = '<tr><th>File Name</th><th>Reason for Backup</th><th>Num of Songs</th><th>Apply</th></tr>';
+        
+        newlist.appendChild(titletr);
+        
+        while (numOfTimes < numOfTr) {
+            
+            numOfTimes++;
+                
+            displayNum++;
+            
+            if (document.getElementsByName(numOfTimes).length > 1) {
+                
+                console.log('true, '+numOfTimes+', '+displayNum+', '+document.getElementsByName(numOfTimes).length);
+                
+                var count = document.getElementsByName(numOfTimes).length;
+                var times = 0;
+                var numCurrently;
+                numCurrently = numOfTimes;
+                
+                while (times < count) {
+                
+                    console.log('innerwhile, '+times+', '+count);
+                    numOfTr--;
+                    
+                    var curtr = document.createElement('tr');
+                    curtr.setAttribute('name', displayNum);
+                    
+                    var text = document.getElementsByName(numCurrently)[times].innerHTML;
+                    
+                    curtr.innerHTML = text;
+                    
+                    newlist.appendChild(curtr);
+                    times++;
+                }
+                numOfTr++;
+                
+            }else {
+                
+                console.log('false, '+numOfTimes+', '+displayNum+', '+document.getElementsByName(numOfTimes).length);
+                
+                var curtr = document.createElement('tr');
+                curtr.setAttribute('name', displayNum);
+                
+                var text = document.getElementsByName(numOfTimes)[0].innerHTML;
+                
+                curtr.innerHTML = text;
+                
+                newlist.appendChild(curtr);
+                
+            };
+            
+        };
+        
+        document.getElementsByTagName('table')[0].remove();
+        document.getElementsByTagName('script')[0].remove();
     })();
     
 </script>

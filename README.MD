@@ -148,9 +148,9 @@ escape(str);
 
 [Changelog](https://github.com/jaketr00/saveMusicInfo/blob/master/changelog.MD)
 
-* Version 1.3
-  * Massive preformance improvement
-    * Album's artwork will now save on the server/computer, which makes load times much faster
+* Version 1.4
+  * Visual improvements
+  * Minor bug fixes
 
 ## What I will not do
 

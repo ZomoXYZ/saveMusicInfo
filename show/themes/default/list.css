@@ -1,44 +1,44 @@
 @font-face {
     font-family: 'OpenSans-Light';
-    src: url(../fonts/Open_Sans/OpenSans-Light.ttf);
+    src: url(fonts/Open_Sans/OpenSans-Light.ttf);
 }
 @font-face {
     font-family: 'OpenSans-LightItalic';
-    src: url(../fonts/Open_Sans/OpenSans-LightItalic.ttf);
+    src: url(fonts/Open_Sans/OpenSans-LightItalic.ttf);
 }
 @font-face {
     font-family: 'OpenSans-Regular';
-    src: url(../fonts/Open_Sans/OpenSans-Regular.ttf);
+    src: url(fonts/Open_Sans/OpenSans-Regular.ttf);
 }
 @font-face {
     font-family: 'OpenSans-Italic';
-    src: url(../fonts/Open_Sans/OpenSans-Italic.ttf);
+    src: url(fonts/Open_Sans/OpenSans-Italic.ttf);
 }
 @font-face {
     font-family: 'OpenSans-Semibold';
-    src: url(../fonts/Open_Sans/OpenSans-Semibold.ttf);
+    src: url(fonts/Open_Sans/OpenSans-Semibold.ttf);
 }
 @font-face {
     font-family: 'OpenSans-SemiboldItalic';
-    src: url(../fonts/Open_Sans/OpenSans-SemiboldItalic.ttf);
+    src: url(fonts/Open_Sans/OpenSans-SemiboldItalic.ttf);
 }
 @font-face {
     font-family: 'OpenSans-Bold';
-    src: url(../fonts/Open_Sans/OpenSans-Bold.ttf);
+    src: url(fonts/Open_Sans/OpenSans-Bold.ttf);
 }
 @font-face {
     font-family: 'OpenSans-BoldItalic';
-    src: url(../fonts/Open_Sans/OpenSans-BoldItalic.ttf);
+    src: url(fonts/Open_Sans/OpenSans-BoldItalic.ttf);
 }
 @font-face {
     font-family: 'OpenSans-ExtraBold';
-    src: url(../fonts/Open_Sans/OpenSans-ExtraBold.ttf);
+    src: url(fonts/Open_Sans/OpenSans-ExtraBold.ttf);
 }
 @font-face {
     font-family: 'OpenSans-ExtraBoldItalic';
-    src: url(../fonts/Open_Sans/OpenSans-ExtraBoldItalic.ttf);
+    src: url(fonts/Open_Sans/OpenSans-ExtraBoldItalic.ttf);
 }
-ul {
+/*ul {
     list-style: none;
     margin: 0;
     padding: 0;
@@ -64,4 +64,37 @@ ul li a:active {
 }
 ul li:hover #apply {
     display: inline-block;
+}*/
+
+html, body {margin:0;padding:0;}
+table, tr {
+    width: 100%;
+}
+tr, th {
+    text-align: center;
+}
+a, tr {
+    font-family: 'OpenSans-Regular';
+    color: black;
+    text-decoration: none;
+}
+th {
+    font-family: 'OpenSans-Bold';
+    font-weight: normal;
+    color: black;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+a:active {
+    color: rgb(0,0,155);
+}
+.apply {
+    font-size: 12px;
+    display: inline-block;
+    visibility: hidden;
+}
+tr:hover .apply {
+    visibility: visible;
 }
