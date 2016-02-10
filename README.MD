@@ -125,8 +125,8 @@ escape(str);
 
 ## To Do
 
-
-* Make "/show/backups" and "/show/edit" able to be accessed with links throughout the site.
+* Make indicators for which song was added/removed in "/show/backup"
+* Make "/show/backup" and "/show/edit" able to be accessed with links throughout the site.
 * Make global options:
   * ~~Make TimeZone editable without changing the Code.~~
   * Only able to add from local machine.
