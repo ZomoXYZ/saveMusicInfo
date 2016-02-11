@@ -204,7 +204,7 @@ a:active {
         height: 400px;
         width: 100%;
         padding-left: 420px;
-        z-index: -1;
+        z-index: 0;
     }
     .song .allinfo::before {
         content: '';
@@ -321,7 +321,7 @@ a:active {
         box-sizing: border-box;
         height: 400px;
         padding-left: 420px;
-        z-index: -1;
+        z-index: 0;
     }
     .song .allinfo::before {
         content: '';
