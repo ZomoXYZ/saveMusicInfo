@@ -125,7 +125,8 @@ escape(str);
 
 ## To Do
 
-* Make indicators for which song was added/removed in "/show/backup"
+* Make indicators for which song was added/removed in "/show/backup".
+* Make songs easily rearrangeable.
 * Make "/show/backup" and "/show/edit" able to be accessed with links throughout the site.
 * Make global options:
   * ~~Make TimeZone editable without changing the Code.~~
