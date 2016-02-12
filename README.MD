@@ -144,6 +144,10 @@ escape(str);
   * Custom CSS.
   * Exportable options.
   * Importable options.
+  
+Most Importantly
+* Redesine the setup of the PHP in the web app.
+  * I am still learning PHP, and while learning I have found more efficient ways of designing the app.
 
 ## Done
 
