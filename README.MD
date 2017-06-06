@@ -21,8 +21,8 @@ Have you ever been listening to internet radio and thought "I need so remember t
 
 1. Download the compressed file from "Download Zip" above and extract the contents.
 2. Go to your server's files (the server is the required program).
- * Usually under `C://(program name)/` in Windows or `/Applications/(program name).app/` in OSX.
- * In OSX you will have to CTRL+Click the program, then click "Show Package Contents".
+  * Usually under `C://(program name)/` in Windows or `/Applications/(program name).app/` in OSX.
+  * In OSX you will have to CTRL+Click the program, then click "Show Package Contents".
 3. Find either the folder named "htdocs" or "www".
 4. In the folder you found, make a folder named whatever you want.
 5. In the contents of the extracted file, you should see a few files and folders named "index.php", and "show".  If you do not see those, find a folder named "saveMusicInfo-master" and open that folder.
@@ -32,25 +32,25 @@ Have you ever been listening to internet radio and thought "I need so remember t
 ### If you downloaded the web browser extension
 
 1. Go to the website you wish to add this to (you can add this to as many websites as you want).
- * I will use Pandora for this example.  If you are using Chrome or Firefox, and know basic HTML/JavaScript, this part is customizable, but I will give steps on how to do Pandora only.
+  * I will use Pandora for this example.  If you are using Chrome or Firefox, and know basic HTML/JavaScript, this part is customizable, but I will give steps on how to do Pandora only.
 2. With TamperMonkey, click the tampermonkey logo at the top right of your browser, and click "New Script".  With GreaseMonkey, click the arrow next to the GreaseMonkey logo and click "New Script".
 
 
  TamperMonkey:
-  * Safari will not show the logo at first, CTRL+Click to the right of the URL bar, then click "Customize Toolbar...".  Now Drag and drop the TamperMonkey to the right or left of the Toolbar.
-  * Change the text after "@name" to something, like "Save Music Button".
-  * Change the text after "@description" to something also, like "This button will save the music info.".
-  * Change the text after "@namespace" and "@author" to your name or alias.
-  * Replace "@match" with "@include".
-  * If the url next to "@include" has a url like "http://www.pandora.com/station/play/...", remove the "/station/play/...".
+   * Safari will not show the logo at first, CTRL+Click to the right of the URL bar, then click "Customize Toolbar...".  Now Drag and drop the TamperMonkey to the right or left of the Toolbar.
+   * Change the text after "@name" to something, like "Save Music Button".
+   * Change the text after "@description" to something also, like "This button will save the music info.".
+   * Change the text after "@namespace" and "@author" to your name or alias.
+   * Replace "@match" with "@include".
+   * If the url next to "@include" has a url like "http://www.pandora.com/station/play/...", remove the "/station/play/...".
   
   
  GreaseMonkey:
-  * Name the script something, like "Save Music Button".
-  * Namespace is your name/alias.
-  * Make the Description something also, like "This button will save the music info.".
-  * If the url below "includes" has a url like "http://www.pandora.com/station/play/...", remove the "/station/play/...".
-  * Click OK
+   * Name the script something, like "Save Music Button".
+   * Namespace is your name/alias.
+   * Make the Description something also, like "This button will save the music info.".
+   * If the url below "includes" has a url like "http://www.pandora.com/station/play/...", remove the "/station/play/...".
+   * Click OK
 3. Now add this code into the script:
 
 ```
@@ -68,24 +68,24 @@ $('.buyButton').click(function() {
 Line by Line
 
 1. When you click on the item with the classname of `buyButton` run the rest of the code.
- * ![Reference Image](https://raw.githubusercontent.com/jaketr00/saveMusicInfo/master/resources/buyButton.png)
+  * ![Reference Image](https://raw.githubusercontent.com/jaketr00/saveMusicInfo/master/resources/buyButton.png)
 2. Referencing an element that has a parent class name of "trackData" and a class name of "albumTitle". It gets the text from inside that element (This will be the album name).
 3. Referencing an element that has a parent class name of "trackData" and a class name of "songTitle". It gets the text from inside that element (This will be the song name).
 4. Referencing an element that has a parent class name of "trackData" and a class name of "artistSummary". It gets the text from inside that element (This will be the artist name).
- * ![Reference Image](https://raw.githubusercontent.com/jaketr00/saveMusicInfo/master/resources/song%20info.png)
+  * ![Reference Image](https://raw.githubusercontent.com/jaketr00/saveMusicInfo/master/resources/song%20info.png)
 5. Url of the `index.php` in reference to your `www` or `htdocs`, **YOU MUST CHANGE THIS**.
 6. This will make a list item inside the drop down menu (which has a parent id of "buy_menu_dd") with text saying "Save Info".  This will also have a link to your local server to add this song which will open in a new tab.
- * ![Reference Image](https://raw.githubusercontent.com/jaketr00/saveMusicInfo/master/resources/button.png)
+  * ![Reference Image](https://raw.githubusercontent.com/jaketr00/saveMusicInfo/master/resources/button.png)
 7. End the code ran from line 1.
 
 # Other useful pages in this project
 
 1. Show saved songs.
- * http://localhost/`path/to/project/`show/
+  * http://localhost/`path/to/project/`show/
 2. Retrieve backups of saved songs.
- * http://localhost/`path/to/project/`show/backup/
-2. Delete a song.
- * http://localhost/`path/to/project/`show/edit/
+  * http://localhost/`path/to/project/`show/backup/
+3. Delete a song.
+  * http://localhost/`path/to/project/`show/edit/
 
 # Saving Syntax
 
@@ -113,7 +113,7 @@ urlencode($str);
 **Javascript**
 ```
 str='artist name';
-escape(str);
+encodeURIComponent(str);
 ```
 
 # Notes
@@ -146,7 +146,7 @@ escape(str);
   * Importable options.
   
 Most Importantly
-* Redesine the setup of the PHP in the web app.
+* Redesign the setup of the PHP in the web app.
   * I am still learning PHP, and while learning I have found more efficient ways of designing the app.
 
 ## Done
@@ -160,7 +160,7 @@ Most Importantly
 ## What I will not do
 
 * Full mobile support
-  * "/show/backups" and "/show/edit" pages will not have a propper mobile theme.
+  * "/show/backups" and "/show/edit" pages will not have a proper mobile theme.
 * Add a button to start a YouTube video for the song to easily listen
   * This is too much of a hastle as YouTube APIs need "points" to use, and everyone who downloads this site will need 100+ "points" to do this.
 
